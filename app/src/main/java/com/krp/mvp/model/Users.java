@@ -1,5 +1,8 @@
 package com.krp.mvp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by rakeshpraneeth on 3/5/18.
  * This class describes the Users object.
@@ -7,7 +10,7 @@ package com.krp.mvp.model;
  * The getter and setter methods are used to get and set the data with Api
  */
 
-public class Users {
+public class Users implements Parcelable {
 
     private int id;
     private String name;
@@ -81,4 +84,47 @@ public class Users {
     public void setWebsite(String website) {
         this.website = website;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeString(this.name);
+        dest.writeString(this.username);
+        dest.writeString(this.email);
+        dest.writeParcelable(this.address, flags);
+        dest.writeString(this.phone);
+        dest.writeString(this.website);
+        dest.writeParcelable(this.company, flags);
+    }
+
+    public Users() {
+    }
+
+    protected Users(Parcel in) {
+        this.id = in.readInt();
+        this.name = in.readString();
+        this.username = in.readString();
+        this.email = in.readString();
+        this.address = in.readParcelable(Address.class.getClassLoader());
+        this.phone = in.readString();
+        this.website = in.readString();
+        this.company = in.readParcelable(Company.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Users> CREATOR = new Parcelable.Creator<Users>() {
+        @Override
+        public Users createFromParcel(Parcel source) {
+            return new Users(source);
+        }
+
+        @Override
+        public Users[] newArray(int size) {
+            return new Users[size];
+        }
+    };
 }
