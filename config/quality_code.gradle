@@ -1,0 +1,29 @@
+apply plugin: 'checkstyle'
+
+task checkstyle(type: Checkstyle){
+    description 'Checks if the code meets standards'
+    group 'verification'
+    showViolations = true
+    configFile file("../config/checkstyle.xml")
+
+    source 'src/main/java'
+    include '**/*.java'
+    exclude '**/gen/**'
+    exclude '**/R.java'
+    exclude '**/BuildConfig.java'
+
+    // empty classpath
+    classpath = files()
+}
+def tasksToApplyCheckStyle = ['assembleDebug']
+
+afterEvaluate{
+    project.tasks.each { task ->
+        if(tasksToApplyCheckStyle.contains(task.name)){
+            task<<{
+                project.tasks.getByName("checkstyle").execute()
+            }
+        }
+
+    }
+}

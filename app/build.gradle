@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply from: 'dependencies.gradle'
+apply from: '../config/quality_code.gradle'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
