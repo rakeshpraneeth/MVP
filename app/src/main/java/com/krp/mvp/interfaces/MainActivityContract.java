@@ -29,5 +29,6 @@ public interface MainActivityContract {
         // Each method specifies about operation to be performed on logic side.
         List<Users> getUserData();
         void makeCallToGetData();
+        void setUserData(List<Users> usersList);
     }
 }
