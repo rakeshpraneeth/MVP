@@ -5,4 +5,7 @@ dependencies {
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
     androidTestImplementation "com.android.support.test:runner:${rootProject.ext.testRunnerVersion}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.ext.espressoVersion}"
+
+    compile "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    compile "com.squareup.retrofit2:converter-scalars:${rootProject.ext.retrofitVersion}"
 }
