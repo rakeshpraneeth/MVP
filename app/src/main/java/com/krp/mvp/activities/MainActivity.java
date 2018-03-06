@@ -1,7 +1,9 @@
-package com.krp.mvp;
+package com.krp.mvp.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.krp.mvp.R;
 
 public class MainActivity extends AppCompatActivity {
 
