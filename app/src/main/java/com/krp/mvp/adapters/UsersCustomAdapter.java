@@ -17,10 +17,12 @@ import java.util.List;
 
 public class UsersCustomAdapter extends RecyclerView.Adapter<UsersCustomAdapter.UsersViewHolder>{
 
-    List<Users> usersList;
+    private List<Users> usersList;
+    private OnUserClickListener onUserClickListener;
 
-    public UsersCustomAdapter(List<Users> usersList){
+    public UsersCustomAdapter(List<Users> usersList, OnUserClickListener onUserClickListener){
         this.usersList = usersList;
+        this.onUserClickListener = onUserClickListener;
     }
 
     @Override
@@ -50,10 +52,22 @@ public class UsersCustomAdapter extends RecyclerView.Adapter<UsersCustomAdapter.
             address = view.findViewById(R.id.address_body);
         }
 
-        public void bind(int positon){
+        public void bind(final int positon){
             userName.setText(usersList.get(positon).getUsername());
             address.setText(usersList.get(positon).getAddress().getCompleteAddress());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onUserClickListener !=null){
+                        onUserClickListener.onUserClicked(positon,usersList.get(positon).getName());
+                    }
+                }
+            });
         }
 
+    }
+
+    public interface OnUserClickListener{
+        void onUserClicked(int position, String name);
     }
 }

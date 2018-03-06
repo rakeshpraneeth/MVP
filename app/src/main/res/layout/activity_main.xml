@@ -1,43 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.krp.mvp.activities.MainActivity">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.krp.mvp.activities.MainActivity">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/listOfUsersLV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/no_users_message_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/no_users_found"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-            android:layout_centerInParent="true"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/failed_message_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/failed_message"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-            android:layout_centerInParent="true"
-            android:visibility="gone"/>
-
-    </RelativeLayout>
-</layout>
+</android.support.constraint.ConstraintLayout>
