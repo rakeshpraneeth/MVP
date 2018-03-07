@@ -2,7 +2,7 @@ package com.krp.mvp.presenters;
 
 import com.krp.mvp.common.BaseUrl;
 import com.krp.mvp.interfaces.ApiService;
-import com.krp.mvp.interfaces.MainActivityContract;
+import com.krp.mvp.interfaces.DashboardContract;
 import com.krp.mvp.model.Users;
 
 import java.util.List;
@@ -15,13 +15,13 @@ import retrofit2.Response;
  * Created by rakeshpraneeth on 3/5/18.
  */
 
-public class MainActivityPresenterImpl implements MainActivityContract.Presenter{
+public class DashboardPresenterImpl implements DashboardContract.Presenter{
 
-    MainActivityContract.View mainActivityView;
+    DashboardContract.View mainActivityView;
     ApiService apiService;
     private List<Users> usersList;
 
-    public MainActivityPresenterImpl(MainActivityContract.View mainActivityView){
+    public DashboardPresenterImpl(DashboardContract.View mainActivityView){
         this.mainActivityView = mainActivityView;
     }
     @Override

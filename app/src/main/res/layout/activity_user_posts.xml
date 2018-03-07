@@ -5,10 +5,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.krp.mvp.activities.DashboardActivity">
+        tools:context="com.krp.mvp.activities.UserPostsActivity">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/listOfUsersRV"
+            android:id="@+id/listOfPostsRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -20,10 +20,10 @@
             android:visibility="gone"/>
 
         <TextView
-            android:id="@+id/no_users_message_tv"
+            android:id="@+id/no_posts_message_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no_users_found"
+            android:text="@string/no_posts_found"
             android:textSize="20sp"
             android:textColor="@android:color/black"
             android:layout_centerInParent="true"

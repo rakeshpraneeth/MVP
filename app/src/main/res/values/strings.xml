@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Rakesh MVP_Example</string>
     <string name="no_users_found">No users found</string>
+    <string name="no_posts_found">No posts found</string>
     <string name="failed_message">Failed to retrieve data</string>
 </resources>
