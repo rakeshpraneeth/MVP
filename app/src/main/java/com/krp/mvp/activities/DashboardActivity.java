@@ -1,5 +1,6 @@
 package com.krp.mvp.activities;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -83,6 +84,9 @@ public class DashboardActivity extends AppCompatActivity implements MainActivity
 
     @Override
     public void onUserClicked(int position, String name) {
-
+        Intent intent = new Intent(this,UserPostsActivity.class);
+        intent.putExtra(UserPostsActivity.USER_ID,position+1);
+        intent.putExtra(UserPostsActivity.USER_NAME,name);
+        startActivity(intent);
     }
 }
