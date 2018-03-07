@@ -8,7 +8,7 @@
         tools:context="com.krp.mvp.activities.DashboardActivity">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/listOfUsersLV"
+            android:id="@+id/listOfUsersRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

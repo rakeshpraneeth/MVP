@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.DashboardActivity" />
-        <activity android:name=".activities.UserPostsActivity"/>
+        <activity android:name=".activities.UserPostsActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

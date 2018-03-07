@@ -10,26 +10,26 @@ import android.view.View;
 import com.krp.mvp.R;
 import com.krp.mvp.adapters.UsersCustomAdapter;
 import com.krp.mvp.databinding.ActivityDashboardBinding;
-import com.krp.mvp.interfaces.MainActivityContract;
+import com.krp.mvp.interfaces.DashboardContract;
 import com.krp.mvp.model.UserList;
 import com.krp.mvp.model.Users;
-import com.krp.mvp.presenters.MainActivityPresenterImpl;
+import com.krp.mvp.presenters.DashboardPresenterImpl;
 
 import java.util.List;
 
-public class DashboardActivity extends AppCompatActivity implements MainActivityContract.View,UsersCustomAdapter.OnUserClickListener{
+public class DashboardActivity extends AppCompatActivity implements DashboardContract.View,UsersCustomAdapter.OnUserClickListener{
 
     private static final String USER_LIST_KEY = "USER_LIST_KEY";
     ActivityDashboardBinding binding;
     UsersCustomAdapter usersCustomAdapter;
-    MainActivityContract.Presenter presenter;
+    DashboardContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          binding = DataBindingUtil.setContentView(this,R.layout.activity_dashboard);
 
-        presenter = new MainActivityPresenterImpl(this);
+        presenter = new DashboardPresenterImpl(this);
 
         if(savedInstanceState !=null && savedInstanceState.containsKey(USER_LIST_KEY)) {
             UserList userList =savedInstanceState.getParcelable(USER_LIST_KEY);
@@ -74,19 +74,19 @@ public class DashboardActivity extends AppCompatActivity implements MainActivity
     public void showUsers(List<Users> users) {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        binding.listOfUsersLV.setLayoutManager(layoutManager);
+        binding.listOfUsersRV.setLayoutManager(layoutManager);
 
-        binding.listOfUsersLV.setHasFixedSize(true);
+        binding.listOfUsersRV.setHasFixedSize(true);
 
         usersCustomAdapter = new UsersCustomAdapter(users,this);
-        binding.listOfUsersLV.setAdapter(usersCustomAdapter);
+        binding.listOfUsersRV.setAdapter(usersCustomAdapter);
     }
 
     @Override
-    public void onUserClicked(int position, String name) {
+    public void onUserClicked(Users user) {
         Intent intent = new Intent(this,UserPostsActivity.class);
-        intent.putExtra(UserPostsActivity.USER_ID,position+1);
-        intent.putExtra(UserPostsActivity.USER_NAME,name);
+        intent.putExtra(UserPostsActivity.USER_ID,user.getId());
+        intent.putExtra(UserPostsActivity.USER_NAME,user.getName());
         startActivity(intent);
     }
 }

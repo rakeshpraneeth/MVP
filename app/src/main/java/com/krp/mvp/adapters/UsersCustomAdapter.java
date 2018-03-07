@@ -27,7 +27,7 @@ public class UsersCustomAdapter extends RecyclerView.Adapter<UsersCustomAdapter.
 
     @Override
     public UsersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_item,parent,false);
         return new UsersViewHolder(view);
     }
 
@@ -48,8 +48,8 @@ public class UsersCustomAdapter extends RecyclerView.Adapter<UsersCustomAdapter.
 
         public UsersViewHolder(View view){
             super(view);
-            userName = view.findViewById(R.id.username_title);
-            address = view.findViewById(R.id.address_body);
+            userName = view.findViewById(R.id.title);
+            address = view.findViewById(R.id.body);
         }
 
         public void bind(final int positon){
@@ -59,7 +59,7 @@ public class UsersCustomAdapter extends RecyclerView.Adapter<UsersCustomAdapter.
                 @Override
                 public void onClick(View v) {
                     if(onUserClickListener !=null){
-                        onUserClickListener.onUserClicked(positon,usersList.get(positon).getName());
+                        onUserClickListener.onUserClicked(usersList.get(positon));
                     }
                 }
             });
@@ -68,6 +68,6 @@ public class UsersCustomAdapter extends RecyclerView.Adapter<UsersCustomAdapter.
     }
 
     public interface OnUserClickListener{
-        void onUserClicked(int position, String name);
+        void onUserClicked(Users user);
     }
 }
