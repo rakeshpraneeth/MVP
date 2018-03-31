@@ -27,8 +27,6 @@ public interface DashboardContract {
     // It contains callback methods which handles logic.
     interface Presenter{
         // Each method specifies about operation to be performed on logic side.
-        List<Users> getUserData();
         void makeCallToGetData();
-        void setUserData(List<Users> usersList);
     }
 }

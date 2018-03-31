@@ -71,14 +71,4 @@ public class DashboardPresenterImpl implements DashboardContract.Presenter{
 
         }
     }
-
-    @Override
-    public void setUserData(List<Users> usersList) {
-        this.usersList = usersList;
-    }
-
-    @Override
-    public List<Users> getUserData() {
-        return usersList;
-    }
 }

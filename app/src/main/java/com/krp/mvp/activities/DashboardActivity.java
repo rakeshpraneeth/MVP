@@ -23,29 +23,26 @@ public class DashboardActivity extends AppCompatActivity implements DashboardCon
     ActivityDashboardBinding binding;
     UsersCustomAdapter usersCustomAdapter;
     DashboardContract.Presenter presenter;
+    UserList userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          binding = DataBindingUtil.setContentView(this,R.layout.activity_dashboard);
 
-        presenter = new DashboardPresenterImpl(this);
-
         if(savedInstanceState !=null && savedInstanceState.containsKey(USER_LIST_KEY)) {
-            UserList userList =savedInstanceState.getParcelable(USER_LIST_KEY);
-             showUsers(userList.getUsers());
-             presenter.setUserData(userList.getUsers());
+            userList = savedInstanceState.getParcelable(USER_LIST_KEY);
+             showUsersInRv(userList.getUsers());
          }else{
-              presenter.makeCallToGetData();
+            presenter = new DashboardPresenterImpl(this);
+            presenter.makeCallToGetData();
          }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if(presenter !=null){
-            UserList userList = new UserList();
-            userList.setUsers(presenter.getUserData());
+        if(userList !=null){
             outState.putParcelable(USER_LIST_KEY,userList);
         }
     }
@@ -72,7 +69,12 @@ public class DashboardActivity extends AppCompatActivity implements DashboardCon
 
     @Override
     public void showUsers(List<Users> users) {
+        userList = new UserList(users);
+        showUsersInRv(users);
 
+    }
+
+    private void showUsersInRv(List<Users> users){
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         binding.listOfUsersRV.setLayoutManager(layoutManager);
 
